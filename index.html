@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="site.webmanifest">
+    <title>Advocate Anil Kumar | Supreme Court & High Court</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        
+        :root {
+            --bg-grey: #DADDD8;
+            /* DADDD8 */
+            --navy: #13293D;
+            /* 13293D */
+            --gold: #EBB841;
+            /* EBB841 */
+            --black: #000000;
+            /* 000000 */
+            --white: #FFFFFF;
+        }
+
+        * {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--black);
+            background: var(--white);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+        
+        #disclaimer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .disclaimer-box {
+            background: var(--bg-grey);
+            padding: 40px;
+            max-width: 700px;
+            text-align: justify;
+            border-radius: 2px;
+            border-top: 5px solid var(--gold);
+        }
+
+        .btn-agree {
+            background: var(--navy);
+            color: var(--gold);
+            border: none;
+            padding: 12px 35px;
+            cursor: pointer;
+            font-weight: 600;
+            display: block;
+            margin: 20px auto 0;
+            text-transform: uppercase;
+        }
+
+        
+        nav {
+            background: var(--navy);
+            padding: 10px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+        }
+        .nav-logo {
+            flex : 1;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+        .nav-links {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-socials {
+    flex: 1; 
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+        .nav-socials a {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .nav-logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo img {
+    height: 55px;
+    width: auto;
+    display: block;
+}
+
+       
+.social-square {
+    width: 35px;
+    height: 35px;
+    background: var(--gold); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy) !important; 
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 2px; 
+    transition: 0.3s;
+}
+
+.social-square:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+}
+
+        
+        #inquiry-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(19, 41, 61, 0.95);
+            z-index: 10002;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-content {
+            background: var(--white);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        .form-content input,
+        .form-content textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .form-submit-btn {
+            background: var(--navy);
+            color: var(--gold);
+            border: none;
+            width: 100%;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        
+        header {
+            padding: 120px 5%;
+            text-align: center;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .header-text {
+            flex: 1;
+            text-align: left;
+            min-width: 300px;
+        }
+
+        .name-title {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--navy);
+            letter-spacing: 2px;
+        }
+
+        .sub-title {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        .photo-space {
+            flex: 1;
+            height: 400px;
+            background: var(--bg-grey);
+            border: 1px solid #ddd;
+            min-width: 300px;
+        }
+
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 20px;
+        }
+
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-grey);
+            padding: 40px;
+            transition: 0.3s;
+            cursor: pointer;
+            border-left: 0px solid var(--gold);
+        }
+
+        .card:hover {
+            border-left: 8px solid var(--gold);
+            background: #e2e5e1;
+        }
+
+        .card h3 {
+            color: var(--navy);
+            margin-top: 0;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .card ul {
+            padding-left: 18px;
+            color: #333;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        
+        .contact-flex {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 50px;
+            background: var(--bg-grey);
+        }
+
+        .contact-info {
+            padding: 60px;
+        }
+
+        .map-box {
+            min-height: 450px;
+            background: #ccc;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(100%);
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 40px 10%;
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+            line-height: 1.6;
+        }
+        
+        /* ============ MOBILE RESPONSIVE STYLES ============ */
+        @media (max-width: 768px) {
+            /* Navigation */
+            nav {
+                padding: 10px 3%;
+                flex-wrap: wrap;
+            }
+            
+            .nav-logo img {
+                height: 40px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                order: 3;
+                margin-left: auto;
+            }
+            
+            .nav-links {
+                order: 4;
+                flex-basis: 100%;
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                background: var(--navy);
+                margin-top: 10px;
+            }
+            
+            .nav-links.active {
+                max-height: 400px;
+            }
+            
+            .nav-links a {
+                margin: 10px 0;
+                padding: 10px;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .nav-socials {
+                order: 2;
+                gap: 8px;
+                margin-left: auto;
+                margin-right: 10px;
+            }
+            
+            .social-square {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            /* Header */
+            header h1 {
+                font-size: 2rem !important;
+                letter-spacing: 1px !important;
+            }
+            
+            header div[style*="font-size: 1rem"] {
+                font-size: 0.8rem !important;
+            }
+            
+            header div[style*="font-size: 1.1rem"] {
+                font-size: 0.9rem !important;
+            }
+            
+            header div[style*="font-size: 1.3rem"] {
+                font-size: 1.1rem !important;
+            }
+            
+            /* About Section */
+            section#about div[style*="display: flex"] {
+                flex-direction: column !important;
+            }
+            
+            section#about div[style*="flex: 1.5"], 
+            section#about div[style*="flex: 1"] {
+                min-width: 100% !important;
+            }
+            
+            section#about img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            
+            /* Practice Areas Cards */
+            .practice-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .card {
+                padding: 25px !important;
+            }
+            
+            .card h3 {
+                font-size: 1.3rem !important;
+            }
+            
+            .card ul li {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Contact Section */
+            section#contact div[style*="display: flex"] {
+                flex-direction: column !important;
+            }
+            
+            section#contact div[style*="height: 350px"] {
+                height: 300px !important;
+            }
+            
+            /* Disclaimer */
+            .disclaimer-box {
+                padding: 25px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .disclaimer-box h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            /* Form Modal */
+            .form-content {
+                padding: 25px !important;
+                width: 95% !important;
+            }
+            
+            .close-btn {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Footer */
+            footer {
+                padding: 30px 5% !important;
+                font-size: 0.65rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6rem !important;
+            }
+            
+            .card {
+                padding: 20px !important;
+            }
+            
+            section {
+                padding: 30px 3% !important;
+            }
+            
+            .disclaimer-box {
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="disclaimer-overlay">
+        <div class="disclaimer-box">
+            <h3 style="text-align: center; color: var(--navy);">DISCLAIMER</h3>
+            <p style="font-size: 0.85rem;">The Bar Council of India does not permit advertisement or solicitation by
+                advocates in any form or manner. By accessing this website, you acknowledge and confirm that you are seeking information relating to Advocate Anil Kumar, and Legal consultants of your own
+                accord and that there has been no form of solicitation, advertisement or inducement. The content of this
+                website is for informational purposes only and should not be interpreted as soliciting or advertisement.
+                No material/information provided on this website should be constructed as legal advice. Advocate Anil Kumar
+                should not be liable for consequences of any action taken by relying on the information provided on
+                this website. The contents of this website are the intellectual property of Advocate Anil Kumar.</p>
+            <button class="btn-agree" onclick="document.getElementById('disclaimer-overlay').style.display='none'">
+                AGREE</button>
+        </div>
+    </div>
+
+    <nav>
+<a href="#home" class="nav-logo">
+  <img src="22.png" alt="Advocate Anil Kumar">
+</a>
+    <div class="nav-links" id="navLinks">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#areas">PRACTICE AREAS</a>
+        <a href="#contact">CONTACT</a>
+        <a href="javascript:void(0)" onclick="openForm('General Inquiry')">INQUIRY</a>
+    </div>
+
+    <div class="nav-socials">
+        <a href="https://www.facebook.com/advanilkumarchd" class="social-square"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/919876257273" target="_blank" class="social-square"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<header id="home" style="padding: 40px 20px 10px 20px; background: var(--white); display: flex; flex-direction: column; align-items: center; text-align: center;">
+    
+    <h1 style="font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--navy); margin: 0; line-height: 0.8; text-transform: uppercase; letter-spacing: 2px;">
+        Anil Kumar
+    </h1>
+    
+ <div style="text-align: center; margin-top: 20px;">
+    
+    <div style="color: var(--gold); font-weight: 600; font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 2px;">
+        ADVOCATE
+    </div>
+
+    <div style="color: var(--navy); font-size: 1.1rem; font-weight: 500; line-height: 1.2;">
+        <div style="margin: 0;">Supreme Court of India</div>
+        
+        <div style="color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.3rem; margin: -2px 0;">
+            &
+        </div>
+        
+        <div style="margin: 0;">Punjab and Haryana High Court, Chandigarh</div>
+    </div>
+
+</div>
+
+</header>
+    <div class="container">
+     <section id="about" style="padding: 50px 5%; background: var(--bg-grey);">
+    <div style="max-width: 1100px; margin: auto; display: flex; align-items: flex-start; gap: 40px; flex-wrap: wrap;">
+        
+        <div style="flex: 1.5; min-width: 300px;">
+            <h2 style="color: var(--navy); font-family: 'Playfair Display', serif; border-left: 4px solid var(--gold); padding-left: 15px; margin-bottom: 20px;">
+                ABOUT THE ADVOCATE
+            </h2>
+            <div style="line-height: 1.8; color: #333; font-size: 1rem; text-align: justify;">
+                <p>Advocate <strong>Anil Kumar</strong> is a seasoned legal professional practicing at the <strong>Supreme Court of India</strong> and the <strong>Punjab and Haryana High Court</strong>. With a reputation for strategic legal architecture and a stubborn commitment to justice, he specializes in navigating complex litigation with a result-oriented approach.</p>
+                <p>Known for meeting strict judicial deadlines and maintaining a sharp focus on procedural perfection, his practice spans across Criminal Defense, Matrimonial Disputes, and High-Stakes Civil Litigation.</p>
+            </div>
+        </div>
+
+       <div style="flex: 1; min-width: 300px; text-align: center;">
+    <img src="main.jpeg" 
+         alt="Advocate Anil Kumar" 
+         style="width: 100%; max-width: 350px; height: 450px; object-fit: cover; object-position: center top; border: 1px solid #bbb; box-shadow: 10px 10px 0px var(--navy); display: block; margin: auto;">
+</div>
+
+    </div>
+</section>
+
+        <section id="areas">
+            <h2 style="text-align: center; color: var(--navy); margin-bottom: 40px;margin-top: 70px;">PRACTICE AREAS</h2>
+            <div class="practice-grid">
+
+                <div class="card" onclick="location.href='criminal.html'">
+                    <h3>Criminal Law</h3>
+                    <ul>
+                        <li>FIR matters, Bail (Regular & Anticipatory)</li>
+                        <li>Trial & Appeals, Cheque Bounce (Section 138 NI Act)</li>
+                        <li>SC/ST Act cases, 498A IPC Matters</li>
+                    </ul>
+                </div>
+
+                <div class="card" onclick="location.href='family.html'">
+                    <h3>Family & Matrimonial</h3>
+                    <ul>
+                        <li>Divorce, Maintenance, Domestic Violence Act</li>
+                        <li>Child Custody, Restitution of Conjugal Rights</li>
+                        <li>498A IPC Legal Defense</li>
+                    </ul>
+                </div>
+
+                <div class="card" onclick="location.href='civil.html'">
+                    <h3>Civil Litigation</h3>
+                    <ul>
+                        <li>Property Disputes, Injunctions, Recovery Suits</li>
+                        <li>Declaration & Possession matters</li>
+                        <li>Civil Revision & Appeals</li>
+                    </ul>
+                </div>
+
+                <div class="card" onclick="location.href='property.html'">
+                    <h3>Property & Real Estate</h3>
+                    <ul>
+                        <li>Sale Deeds, Agreements to Sell, Mutation</li>
+                        <li>Partition Matters, Builder-Buyer Disputes</li>
+                    </ul>
+                </div>
+
+                <div class="card" onclick="location.href='specialized.html'">
+                    <h3>Specialized Practice</h3>
+                    <ul>
+                        <li>Consumer Complaints & Compensation Claims</li>
+                        <li>Constitutional & Writ Matters (High Court)</li>
+                        <li>Online Legal Consultation & Evaluation</li>
+                    </ul>
+                </div>
+
+                <div class="card" onclick="location.href='documentation.html'">
+                    <h3>Documentation</h3>
+                    <ul>
+                        <li>Drafting & Vetting of Legal Notices</li>
+                        <li>Agreements, Affidavits & Contracts</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+ <section id="contact" style="padding: 60px 5%; background: var(--bg-grey);">
+    <div style="max-width: 1200px; margin: auto; display: flex; gap: 50px; flex-wrap: wrap;">
+        
+        <div style="flex: 1; min-width: 300px;">
+            <h2 style="color: var(--navy); font-family: 'Playfair Display', serif; border-left: 4px solid var(--gold); padding-left: 15px; margin-bottom: 25px;">VISIT OUR OFFICE</h2>
+            
+            <div style="line-height: 1.8; color: #333;">
+                <p><strong>ADDRESS:</strong><br>
+                House No. 2186, Sector 22 C,<br>
+                Chandigarh - 160022</p>
+
+                <p><strong>TIMINGS:</strong><br>
+                Mon - Sun: <br> 10:00 AM - 08:00 PM</p>
+
+   <div style="margin-top: 30px;">
+    
+    <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 25px;">
+        <a href="https://wa.me/919876257273" target="_blank" style="text-decoration: none;">
+            <i class="fab fa-whatsapp" style="font-size: 2.2rem; color: #25D366;"></i>
+        </a>
+        
+        <a href="https://www.facebook.com/advanilkumarchd" target="_blank" style="text-decoration: none;">
+            <i class="fab fa-facebook" style="font-size: 2.2rem; color: #1877F2;"></i>
+        </a>
+
+        <a href="tel:+919876257273" style="text-decoration: none;">
+            <i class="fas fa-phone-alt" style="font-size: 1.8rem; color: var(--navy);"></i>
+        </a>
+    </div>
+
+    <button onclick="openForm('Office Consultation')" style="background: var(--navy); color: var(--white); border: 2px solid var(--gold); padding: 12px 25px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-family: 'Montserrat', sans-serif;">
+        Book Consultation
+    </button>
+
+</div>
+            </div>
+        </div>
+
+       <div style="flex: 1; min-width: 300px; height: 350px; border: 3px solid var(--gold); border-radius: 8px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+    <iframe 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        loading="lazy" 
+        allowfullscreen 
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.228!2d76.7679!3d30.7309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQzJzUxLjIiTiA3NsKwNDYnMTIuNyJF!5e0!3m2!1sen!2sin!4v1700000000000">
+    </iframe>
+</div>
+    </div>
+</section>
+
+    <div id="inquiry-modal">
+        <div class="form-content">
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+            <h3 id="form-title" style="color: var(--navy); margin-bottom: 20px;">Legal Inquiry</h3>
+            <form action="https://formsubmit.co/advocateanilkumarchd@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="text" name="_honey" style="display:none">
+                <input type="text" name="Name" placeholder="Full Name" required>
+                <input type="text" name="Phone" placeholder="Phone Number" required>
+                <textarea name="Case Details" rows="5" placeholder="Briefly describe your legal matter..."
+                    required></textarea>
+                
+                
+                <button type="submit" class="form-submit-btn">SUBMIT REQUEST</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        THE CONTENTS OF THIS WEBSITE ARE THE INTELLECTUAL PROPERTY OF ADVOCATE ANIL KUMAR. <br>
+        THE BAR COUNCIL OF INDIA DOES NOT PERMIT ADVERTISEMENT OR SOLICITATION. <br>
+        THIS WEBSITE IS FOR INFORMATIONAL PURPOSES ONLY AND SHOULD NOT BE CONSTRUED AS LEGAL ADVICE. <br><br>
+        COPYRIGHT © 2026 ADVOCATE ANIL KUMAR. ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+        function openForm(area) {
+            document.getElementById("inquiry-modal").style.display = "flex";
+            document.getElementById("form-title").innerText = "Inquiry: " + area;
+        }
+        function closeForm() {
+            document.getElementById("inquiry-modal").style.display = "none";
+        }
+        
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("inquiry-modal")) {
+                closeForm();
+            }
+        }
+    </script>
+
+</body>
+
+</html>
